@@ -1,0 +1,148 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cyan: var(--cyan);
+  --color-cyan-foreground: var(--cyan-foreground);
+  --color-violet: var(--violet);
+  --color-emerald: var(--emerald);
+  --color-amber: var(--amber);
+  --color-glass: var(--glass);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-display: var(--font-display);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Sophisticated slate dark base */
+  --background: oklch(0.16 0.02 264);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.21 0.025 263);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.19 0.025 263);
+  --popover-foreground: oklch(0.97 0.005 250);
+
+  --primary: oklch(0.72 0.16 220);
+  --primary-foreground: oklch(0.15 0.02 264);
+  --secondary: oklch(0.28 0.03 262);
+  --secondary-foreground: oklch(0.97 0.005 250);
+  --muted: oklch(0.26 0.025 262);
+  --muted-foreground: oklch(0.68 0.025 256);
+  --accent: oklch(0.30 0.04 262);
+  --accent-foreground: oklch(0.97 0.005 250);
+  --destructive: oklch(0.63 0.22 22);
+  --destructive-foreground: oklch(0.98 0.005 250);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.72 0.16 220);
+
+  /* Accents */
+  --cyan: oklch(0.78 0.15 200);
+  --cyan-foreground: oklch(0.15 0.02 264);
+  --violet: oklch(0.66 0.20 290);
+  --emerald: oklch(0.74 0.16 162);
+  --amber: oklch(0.82 0.16 78);
+  --glass: oklch(0.24 0.03 263 / 55%);
+
+  --chart-1: oklch(0.78 0.15 200);
+  --chart-2: oklch(0.66 0.20 290);
+  --chart-3: oklch(0.74 0.16 162);
+  --chart-4: oklch(0.82 0.16 78);
+  --chart-5: oklch(0.63 0.22 22);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  /* Effects */
+  --gradient-brand: linear-gradient(135deg, oklch(0.78 0.15 200), oklch(0.66 0.20 290));
+  --gradient-surface: linear-gradient(160deg, oklch(0.23 0.03 263 / 80%), oklch(0.18 0.025 264 / 60%));
+  --glow-cyan: 0 0 0 1px oklch(0.78 0.15 200 / 25%), 0 0 30px -6px oklch(0.78 0.15 200 / 45%);
+  --glow-violet: 0 0 0 1px oklch(0.66 0.20 290 / 25%), 0 0 30px -6px oklch(0.66 0.20 290 / 45%);
+  --shadow-elevated: 0 24px 60px -20px oklch(0.05 0.02 264 / 80%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(60% 50% at 12% 0%, oklch(0.78 0.15 200 / 12%), transparent 60%),
+      radial-gradient(55% 45% at 92% 5%, oklch(0.66 0.20 290 / 12%), transparent 60%);
+    background-attachment: fixed;
+    font-feature-settings: "ss01", "cv01";
+  }
+}
+
+@utility glass {
+  background: var(--gradient-surface);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid oklch(1 0 0 / 8%);
+}
+
+@utility glow-border {
+  box-shadow: var(--glow-cyan);
+}
+
+@utility text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes scan-line {
+  0% { top: 0%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float-grid {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
