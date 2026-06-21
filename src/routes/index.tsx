@@ -132,12 +132,15 @@ function Index() {
             <Brain className="h-4 sm:h-5 w-4 sm:w-5 text-background" />
           </div>
           <div className="hidden sm:block">
-            <p className="font-display text-lg font-bold leading-none">Pulse AutoML</p>
+            <p className="font-display text-lg font-bold leading-none">Pulse AutoML <span className="text-xs font-normal text-muted-foreground ml-2">v2.0</span></p>
             <p className="text-xs text-muted-foreground">No-code model optimization</p>
           </div>
           <div className="sm:hidden">
             <p className="font-display text-sm font-bold leading-none">Pulse</p>
           </div>
+        </div>
+        <div className="bg-background/50 px-3 py-1.5 rounded-full border text-xs font-mono">
+          API: {API_BASE}
         </div>
       </header>
 
